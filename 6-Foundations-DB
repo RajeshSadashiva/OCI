@@ -1,0 +1,18 @@
+	1) OCI DB options
+		▪ VM DBs - Fast provisioning, billing continues in stopped state. Increase storage.
+		▪ Bare Metal DBs - Fast performance, billing stops in stop state. Scale CPUs
+		▪ RAC - Managed High availability 
+		▪ ExaData DBs - Managed ExaData Infrastructure 
+		▪ Autonomous Shared - Self driving, repairing and securing, multi-tenant
+		▪ Autonomous Dedicated - Self driving, repairing and securing, single-tenant
+	2) DB Systems - Security - IAM, VCN, TDE, RMAN. 
+	3) DB backups
+		▪ Backup  - manual or automatic to oracle owned object storage - midnight between a 2hr window - preset retention between 7 - 60 Days.
+		▪ Recover - from object storage based on time, good state and SCN
+	4) DB HA and DR - RAC and Data Guard(Sync between Prod and Standby)
+		▪ Two modes for Data guard.
+			§ Switchover - Planned with no data loss
+			§ Fail over - unplanned with minimal data loss
+	5) Autonomous DBs
+		▪ Fully managed ATP and ADWH
+      Backup, patching, upgrading and tuning is automated without downtime.
