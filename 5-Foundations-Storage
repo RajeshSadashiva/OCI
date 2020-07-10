@@ -1,0 +1,28 @@
+	1) Block volume
+		▪ Hard-drive equivalent, stores beyond lifetime of compute instances
+		▪ No high level metadata 
+		▪ Can mount to any kind of File system
+		▪ Periodic backups recommended with OCI allowed automated scheduled backups to object storage.
+		▪ Boot volume - OS disk
+		▪ Block volume - Data disk
+	2) Local NVMe
+		▪ Designed high performance local storage
+		▪ NoSQL databases, DWH, in-memory DBs
+		▪ Storage is non-persistent.
+		▪ No support of snapshots, backups.
+	3) File Storage
+		▪ NFS equivalent - NFSv3
+		▪ Hierarchical 
+		▪ Access over network without additional software
+		▪ Restore a file within snapshot or entire snapshot using cp, rsync command
+	4) Object Storage
+		▪ No hierarchy - flat structure 
+		▪ Metadata - index based
+		▪ Internet scale, high performance
+		▪ Optional - multi AD region backup
+		▪ Cross region copy for DR scenarios
+	5) Archive Storage
+		▪ Same as Object storage but the retrieval rate is slow.
+		▪ 10times cheaper that standard 
+		▪ 90 days minimum retention period.
+		▪ Archive bucket can't be upgraded to standard storage tier or vice versa
