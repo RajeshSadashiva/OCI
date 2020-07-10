@@ -1,0 +1,36 @@
+	1) Virtual Cloud Network
+		▪ Software defined private network
+		▪ Enables OCI resources to communicate within OCI and on premise.
+		▪ Highly Available, Scalable and Secure. 
+		▪ Address range is the IP range of VCN
+		▪ Every resource in OCI has a unique private IP
+		▪ Subnets further divide the VCN
+		▪ Subnets further isolate and secure the VCN
+		▪ Compute instances are placed inside a subnet.
+		
+	2) Gateways
+		▪ Internet Gateway provides a pathway from internet to OCI, ex: Users accessing website.
+		▪ NAT Gateway provides a pathway from OCI to internet, ex: Patches, updates.
+		▪ DRG(Dynamic Routing Gateway):
+			§ A tool to connect OCI and On-premise resources. 
+			§ IPSec VPN:  A VPN based Routing Gateway
+			§ FastConnect: Private, Dedicated Connectivity.
+		▪ Service Gateway: Lets you access the Public OCI services such as Object storage without using an Internet or NAT Gateway. Uses private IP of the services to communicate inside OCI.
+	3) Peering
+		▪ VCN Peering is a process of connecting multiple VCNs.
+		▪ Local VCN peering: is a process of connecting VCNs within the same region.
+		▪ Remote VCN peering: is a process of connecting VCNs in different regions.
+	4) VCN Security
+		▪ Security list consists of a set of rules associated with a subnet that specifies traffic allowed in and out of subnet.
+		▪ Network security Group consists of a set of rules that apply only to a set of VNICs.
+	5) Load Balancer
+		▪ A load balancer sits between the clients and the servers
+		▪ Below are the activities of an LB.
+			§ Service Discovery: What backend servers are available. 
+			§ Health Check of backend servers.
+			§ Which algorithm to be used to balance the load on the backend servers.
+		▪ Benefits of an LB.
+			§ Fault tolerant and Highly available
+			§ Scale
+			§ Naming abstraction: name resolution can be delegated to the LD and backend servers don't need public IP.
+    Public Load balancer: Public IP for load balancers which are present in public subnet and they load balance the servers which are present in private subnet.
