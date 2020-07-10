@@ -1,0 +1,13 @@
+	1) IAM
+		▪ Who - Groups, Users and instances
+		▪ Permissions -> Policies -> compartments -> resources
+		▪ Instance principals lets instances to make API calls to other OCI resources without configuring user credentials or a config file.
+	2) Authentication
+		▪ User name, password
+		▪ API signing key required when using the OCI API in conjunction with SDK/CLI
+		▪ Auth tokens - to authenticate with 3rd party APIs, don't working with OCI
+	3) Authorization and Policies
+		▪ Policies are OCI authorizations. 
+		▪ All policies are written in human readable format like "Allow group <groupname> to <verb> <compartment/tenancy> where <>"
+		▪ Verb contains - inspect, read, use and manage
+      Resource type consists of the resource name.
