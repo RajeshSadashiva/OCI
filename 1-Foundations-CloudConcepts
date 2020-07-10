@@ -1,0 +1,28 @@
+Cloud Concepts:
+	1) Cloud Computing
+		1) On-Demand Self Service: On-Demand resource provisioning capabilities.
+		2) Broad network access: Resources can be triggered via internet.
+		3) Resource pooling: Resources are pooled for multiple consumers using multi-tenet model.
+		4) Rapid elasticity: Resources can be scaled.
+		5) Measured service: Resources can be monitored for performance, security and cost.
+		
+	2) Service Models
+		1) Traditional IT/On-Premise: All the resources are self-managed.
+		2) IAAS: Networking, storage, servers and virtualization is managed by Cloud provider.
+		3) PAAS: Runtime + OS + middleware + IAAS managed by Cloud provider.
+		4) SAAS: Software as a service, pay for services.
+		
+	3) Cloud Terminology
+		1) High Availability: High availability systems avoid any single point of failure.
+		2) Disaster Recovery: 
+			§ Recovery Point Objective: Time threshold for data loss. Example 1hr of data loss during a Disaster is ok.
+			§ Recovery Time Objective: Time threshold for resuming the services. Example, in 15min the services should resume.
+		3) Fault Tolerance: Describes how a Cloud vendor will ensure minimal downtime for services provided. 
+		4) Scalability: 
+			§ Horizontal Scaling: Scale in/Scale out resources based on the requirement. Ex, add or remove more servers.
+			§ Vertical Scaling: Scale up/Scale down resources based on the requirement. Ex, increase or decrease CPU and memory of the server.
+		5) Elasticity: Ability to quickly scale. 
+		
+	4) CAPEX vs OPEX: Cloud lets you trade CAPEX for OPEX.
+		CAPEX: Capital expenditure of the resources. Fixed assets like buildings, equipment for servers etc.
+		OPEX: Operational expenditure for running the servers. 
