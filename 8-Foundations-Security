@@ -1,0 +1,36 @@
+	1) Shared security Model
+		▪ Responsibility is shared between consumers and OCI
+		▪ Consumer responsibility - patching of Oses, OS configurations, IAM,  Network security etc, Data classification and compliance. 
+		▪ Oracle responsibility - Physical security, hardware and networking
+		
+	2) Security Service
+		▪ IAM
+		▪ Key management - centralized key management capabilities
+		▪ Hardware Security modules(HSMs) are FIPS 140-2(Federal Information processing Standards) - they are tramper resistance - deletes the keys when it detects tampering.
+		▪ MFA - multi factor auth
+		▪ Federation for SSO, uses Identity provider(IdP)
+		▪ Encryption at rest and in-transit
+		▪ WAF
+		▪ DDoS protection - in-built 
+	3) Identity and Access management
+		▪ Who - Groups, Users and instances
+		▪ Permissions -> Policies -> compartments -> resources
+	4) Data Protection 
+		▪ Block volume - Data encrypted at rest and in-transit
+		▪ File storage - Data encrypted at rest and in-transit
+		▪ Object storage - Data encrypted at rest and in-transit, private buckets, pre-authenticated requests
+		▪ Database - Transparent Data encryption, Data safe and vault.
+			§ Data safe is Managed service that provides insights on security on oracle databases.
+			§ Features include security assessment, user assessment, data discovery, masking and activity auditing
+			§ Data safe supports ATP, ADW and VM/BM DB systems.
+			§ No extra costs to use
+	5) OS and Workload isolation 
+		▪ OS management service: Automates and executes management tasks.
+		▪ Package and configuration management. 
+		▪ Security and compliance reporting.
+		▪ Configured by default in Oracle Linux Instances for live patching without downtime.
+	6) Infrastructure protection 
+		▪ Tiered Subnet - DMZ LBs, Private and public subnets. 
+		▪ Gateways - Internet, NAT and DRG(Dynamic Routing Gateway)
+		▪ Security lists(subnet) and NSG(VNIC)
+		▪ WAF - HTTP/S filter, server side - protects against cross site scripting, SQL injection and ability to filter specific IP. Protects applications from unwanted traffic. Stops Layer 7 DDoS attacks.
