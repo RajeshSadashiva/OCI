@@ -1,0 +1,29 @@
+	1) Oracle Cloud Infrastructure Regions
+		▪ A Region is the geographical area comprising of one or more data center(Availability Domains)
+		▪ As of Feb 2020 there are 21 Regions and 15 planned regions. Here is the link for the regions in the Oracle Cloud and the services available https://www.oracle.com/cloud/data-regions.html
+		▪ We have to choose a region close to customers, so that there is low-latency. 
+		▪ We have to choose the region based on the data compliance imposed by countries. 
+	2) Availability Domain
+		▪ Availability Domain is an isolated data center located in a region.
+		▪ There can be 1 or more Availability Domains in a region and are very unlikely to fail simultaneously.
+		▪ Availability Domains don’t share the physical infrastructure such as power, cooling or domain network.
+		▪ All Availability Domains in a region are connected via low-latency, high network bandwidth.
+	3) Fault Domains
+		▪ Grouping of infrastructure within an Availability Domain to provide a fault tolerant environment.
+		▪ FDs act as logical data center within an AD.
+		▪ Each AD has 3 FDs and they don't share a single point failure. 
+		▪ Placement of resources can be configured during the launch time.
+	4) High Availability Design
+		▪ We can use combination of fault domains, Availability Domains and Regions to make a high available solution
+		▪ Using multiple FDs in AD, for example FD1 - 1 web, FD2 - 1 DB, FD3 - 2 web, 2 DB. This way if one FD fails still the system is available. 
+		▪ Deploy Systems in multiple AD to protect from a single AD failure.
+		▪ Region Pair to protect from a Region failure. 
+	5) Compartments
+		▪ A compartment is a collection of related resources. It helps you to isolate and control access to your resources
+		▪ Tenancy or Root compartment is the first and default compartment, inside which multiple compartments can be configured. 
+		▪ Compartments can be nested till 6 levels deep.
+		▪ Each resource belongs to a single compartment.
+		▪ Resources can interact with other compartments.
+		▪ Resources can be moved, added and deleted anytime.
+		▪ Resources from multiple regions can be placed in a single compartment. 
+		▪ Users can access compartments by policies. Analyze costs at compartment level.
