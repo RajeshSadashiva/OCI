@@ -1,0 +1,18 @@
+	1) SLA
+		▪ Tier based service credit if there is a drop in service(If claim request made)
+		▪ Availability is defined as a return response of 2XX for an API call that performs a cryptographic operation
+		▪ > 99.9 No credit
+		▪ < 99.9 10% credit(More than 44.2 minutes outage in 30 days(43200 min))
+		▪ < 99.0 25% credit(More than 7.2 hours outage in 30 days)
+		▪ < 95 100% credit(More than 36 hours outage in 30 days)
+		▪ Availability/Data plane - services in operation with uptime and connectivity.
+		▪ Manageability/Control Plane - ability to manage, monitor and modify
+		▪ Performance - Services performed as expected. 
+	2) Support
+		▪ No support for always free resources customers
+		▪ Limited support for free tier accounts and free tier credits usage.
+		▪ Paid accounts can open service requests for - need customer support identifier(CSI), OCID of tenancy and resource
+			§ Resolving technical issues
+			§ Reset password or unlock tenancy password.
+			§ Adding or modifying tenancy password
+        Request a service limit increase.
