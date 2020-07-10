@@ -1,0 +1,39 @@
+	1) Pricing Models
+		▪ PAYG: Pay as you go. 
+			§ Consumed only for resources used.
+			§ No upfront commitment. 
+			§ No minimum service period. 
+			§ Hourly billed. 
+			§ Consumption based model for services like functions. 
+		▪ Monthly flex
+			§ A minimum of $1000 monthly charge and a commitment of 12months minimum. 
+			§ 33% to 60% savings vs PAYG
+			§ Monthly pre-paid usage.
+		▪ BYOL
+			§ Port licenses from on-premise to OCI
+		▪ Factors that impact pricing
+			§ Resource size and types - bigger resources cost more.
+			§ Data transfer - No ingress charges, Egress costs beyond 10TB a month.
+			§ All regions have the same pricing. 
+		▪ Block volume pricing
+			§ 0.0255$ per GB
+			§ Performance costs additional for Balanced and HPUs.
+				□ Basic - 200 IOPS - 0VPUs - 0$ per GB
+				□ Balanced - 6000 IOPS - 10VPUs - 0.017$ per GB
+				□ HPU - 7500 IOPS - 20VPUs - 0.034$ per GB
+		▪ Ingress always free
+		▪ Egress
+			§ Free within AD
+			§ Free within AD's in same region
+			§ Chargeable between regions
+			§ Chargeable between OCI and Internet.
+	2) Cost management
+		▪ Cost tracking tags can be used to track costs and analyze them in cost analysis dashboard with tag keys
+		▪ Budgets can be allotted to 
+			§ Compartments 
+			§ Cost tracking tags
+		▪ Usage reports can be downloaded as CSVs and they contain usage data of 24hours. 
+		▪ Retained for 1year by default.
+	3) Free tier:
+		▪ $300 credits for 30 day usage
+		▪ Couple of always free to use services.
