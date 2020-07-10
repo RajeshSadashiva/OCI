@@ -1,0 +1,28 @@
+	1) Bare metal
+		§ Direct hardware access, single tenant
+		§ Workloads that are performance sensitive
+		§ Workloads that are not virtualized. 
+		§ Workloads that require special hypervisor. 
+		§ Workloads that require bring your own license. 
+	2) VMs
+		§ VM - A hypervisor underlying bare metal servers intro smaller VMs optimized for hardware, firmware and network infrastructure. Multi-tenant.
+			§ When a control of full aspects for VM required. 
+			§ Running legacy Linux and windows
+			§ On-premise to OCI
+		§ Dedicated VM host(DVH) - VM single-tenant. Pay for only dedicated VM host - no charge for running VMs on the Dedicated VM. Oracle manages hypervisor and hardware.
+	3) Scaling
+		§ Horizontal Scaling: Scale in/Scale out resources based on the requirement. New shapes must have the same. Auto-scaling is a feature to automatically detect the load to add or remove servers. No additional cost for using auto-scaling feature, pay as per compute instances used.
+		§ Vertical Scaling: Scale up/Scale down resources based on the requirement. Ex, increase or decrease CPU and memory of the server.
+	4) Container Engine
+		▪ Containers share the Kernel OS with other containers and are hosted on VMs
+		▪ Containers are not tied to any specific infrastructure and can run anywhere.
+		▪ How to run? Manually SSH into machines and run Docker.
+		▪ Pros: Simple and easy to run.
+		▪ Cons: Not scalable, no self-healing, no automation and not reproducible. 
+		▪ To handle the cons we need to use orchestration tools like docker swarm and kubernetes engine
+		▪ Oracle Kubernetes Engine(OKE) uses open source system Kubernetes for automating deployment, scaling and management of containerized applications. 
+		▪ OCIR is a managed docker container registry service and can be used to pull images for deployments. 
+	5) Functions
+		▪ Small but powerful blocks of code that generally do one simple thing. 
+		▪ Stored as docker image in a specified Docker registry
+      Invoked in response to a CLI command or Signed HTTP request. 
