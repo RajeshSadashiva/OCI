@@ -1,0 +1,298 @@
+Cloud Concepts:
+	1) Cloud Computing
+		1) On-Demand Self Service: On-Demand resource provisioning capabilities.
+		2) Broad network access: Resources can be triggered via internet.
+		3) Resource pooling: Resources are pooled for multiple consumers using multi-tenet model.
+		4) Rapid elasticity: Resources can be scaled.
+		5) Measured service: Resources can be monitored for performance, security and cost.
+		
+	2) Service Models
+		1) Traditional IT/On-Premise: All the resources are self-managed.
+		2) IAAS: Networking, storage, servers and virtualization is managed by Cloud provider.
+		3) PAAS: Runtime + OS + middleware + IAAS managed by Cloud provider.
+		4) SAAS: Software as a service, pay for services.
+		
+	3) Cloud Terminology
+		1) High Availability: High availability systems avoid any single point of failure.
+		2) Disaster Recovery: 
+			§ Recovery Point Objective: Time threshold for data loss. Example 1hr of data loss during a Disaster is ok.
+			§ Recovery Time Objective: Time threshold for resuming the services. Example, in 15min the services should resume.
+		3) Fault Tolerance: Describes how a Cloud vendor will ensure minimal downtime for services provided. 
+		4) Scalability: 
+			§ Horizontal Scaling: Scale in/Scale out resources based on the requirement. Ex, add or remove more servers.
+			§ Vertical Scaling: Scale up/Scale down resources based on the requirement. Ex, increase or decrease CPU and memory of the server.
+		5) Elasticity: Ability to quickly scale. 
+		
+	4) CAPEX vs OPEX: Cloud lets you trade CAPEX for OPEX.
+		CAPEX: Capital expenditure of the resources. Fixed assets like buildings, equipment for servers etc.
+		OPEX: Operational expenditure for running the servers. 
+		
+		
+Oracle Cloud Infrastructure Architecture
+	1) Oracle Cloud Infrastructure Regions
+		▪ A Region is the geographical area comprising of one or more data center(Availability Domains)
+		▪ As of Feb 2020 there are 21 Regions and 15 planned regions. Here is the link for the regions in the Oracle Cloud and the services available https://www.oracle.com/cloud/data-regions.html
+		▪ We have to choose a region close to customers, so that there is low-latency. 
+		▪ We have to choose the region based on the data compliance imposed by countries. 
+	2) Availability Domain
+		▪ Availability Domain is an isolated data center located in a region.
+		▪ There can be 1 or more Availability Domains in a region and are very unlikely to fail simultaneously.
+		▪ Availability Domains don’t share the physical infrastructure such as power, cooling or domain network.
+		▪ All Availability Domains in a region are connected via low-latency, high network bandwidth.
+	3) Fault Domains
+		▪ Grouping of infrastructure within an Availability Domain to provide a fault tolerant environment.
+		▪ FDs act as logical data center within an AD.
+		▪ Each AD has 3 FDs and they don't share a single point failure. 
+		▪ Placement of resources can be configured during the launch time.
+	4) High Availability Design
+		▪ We can use combination of fault domains, Availability Domains and Regions to make a high available solution
+		▪ Using multiple FDs in AD, for example FD1 - 1 web, FD2 - 1 DB, FD3 - 2 web, 2 DB. This way if one FD fails still the system is available. 
+		▪ Deploy Systems in multiple AD to protect from a single AD failure.
+		▪ Region Pair to protect from a Region failure. 
+	5) Compartments
+		▪ A compartment is a collection of related resources. It helps you to isolate and control access to your resources
+		▪ Tenancy or Root compartment is the first and default compartment, inside which multiple compartments can be configured. 
+		▪ Compartments can be nested till 6 levels deep.
+		▪ Each resource belongs to a single compartment.
+		▪ Resources can interact with other compartments.
+		▪ Resources can be moved, added and deleted anytime.
+		▪ Resources from multiple regions can be placed in a single compartment. 
+		▪ Users can access compartments by policies. 
+		▪ Analyze costs at compartment level.
+	
+Oracle Cloud Networking Services
+	1) Virtual Cloud Network
+		▪ Software defined private network
+		▪ Enables OCI resources to communicate within OCI and on premise.
+		▪ Highly Available, Scalable and Secure. 
+		▪ Address range is the IP range of VCN
+		▪ Every resource in OCI has a unique private IP
+		▪ Subnets further divide the VCN
+		▪ Subnets further isolate and secure the VCN
+		▪ Compute instances are placed inside a subnet.
+		
+	2) Gateways
+		▪ Internet Gateway provides a pathway from internet to OCI, ex: Users accessing website.
+		▪ NAT Gateway provides a pathway from OCI to internet, ex: Patches, updates.
+		▪ DRG(Dynamic Routing Gateway):
+			§ A tool to connect OCI and On-premise resources. 
+			§ IPSec VPN:  A VPN based Routing Gateway
+			§ FastConnect: Private, Dedicated Connectivity.
+		▪ Service Gateway: Lets you access the Public OCI services such as Object storage without using an Internet or NAT Gateway. Uses private IP of the services to communicate inside OCI.
+	3) Peering
+		▪ VCN Peering is a process of connecting multiple VCNs.
+		▪ Local VCN peering: is a process of connecting VCNs within the same region.
+		▪ Remote VCN peering: is a process of connecting VCNs in different regions.
+	4) VCN Security
+		▪ Security list consists of a set of rules associated with a subnet that specifies traffic allowed in and out of subnet.
+		▪ Network security Group consists of a set of rules that apply only to a set of VNICs.
+	5) Load Balancer
+		▪ A load balancer sits between the clients and the servers
+		▪ Below are the activities of an LB.
+			§ Service Discovery: What backend servers are available. 
+			§ Health Check of backend servers.
+			§ Which algorithm to be used to balance the load on the backend servers.
+		▪ Benefits of an LB.
+			§ Fault tolerant and Highly available
+			§ Scale
+			§ Naming abstraction: name resolution can be delegated to the LD and backend servers don't need public IP.
+		▪ Public Load balancer: Public IP for load balancers which are present in public subnet and they load balance the servers which are present in private subnet.
+
+Compute Services: 
+	1) Bare metal
+		§ Direct hardware access, single tenant
+		§ Workloads that are performance sensitive
+		§ Workloads that are not virtualized. 
+		§ Workloads that require special hypervisor. 
+		§ Workloads that require bring your own license. 
+	2) VMs
+		§ VM - A hypervisor underlying bare metal servers intro smaller VMs optimized for hardware, firmware and network infrastructure. Multi-tenant.
+			§ When a control of full aspects for VM required. 
+			§ Running legacy Linux and windows
+			§ On-premise to OCI
+		§ Dedicated VM host(DVH) - VM single-tenant. Pay for only dedicated VM host - no charge for running VMs on the Dedicated VM. Oracle manages hypervisor and hardware.
+	3) Scaling
+		§ Horizontal Scaling: Scale in/Scale out resources based on the requirement. New shapes must have the same. Auto-scaling is a feature to automatically detect the load to add or remove servers. No additional cost for using auto-scaling feature, pay as per compute instances used.
+		§ Vertical Scaling: Scale up/Scale down resources based on the requirement. Ex, increase or decrease CPU and memory of the server.
+	4) Container Engine
+		▪ Containers share the Kernel OS with other containers and are hosted on VMs
+		▪ Containers are not tied to any specific infrastructure and can run anywhere.
+		▪ How to run? Manually SSH into machines and run Docker.
+		▪ Pros: Simple and easy to run.
+		▪ Cons: Not scalable, no self-healing, no automation and not reproducible. 
+		▪ To handle the cons we need to use orchestration tools like docker swarm and kubernetes engine
+		▪ Oracle Kubernetes Engine(OKE) uses open source system Kubernetes for automating deployment, scaling and management of containerized applications. 
+		▪ OCIR is a managed docker container registry service and can be used to pull images for deployments. 
+	5) Functions
+		▪ Small but powerful blocks of code that generally do one simple thing. 
+		▪ Stored as docker image in a specified Docker registry
+		▪ Invoked in response to a CLI command or Signed HTTP request. 
+
+Pricing and Billing
+	1) Pricing Models
+		▪ PAYG: Pay as you go. 
+			§ Consumed only for resources used.
+			§ No upfront commitment. 
+			§ No minimum service period. 
+			§ Hourly billed. 
+			§ Consumption based model for services like functions. 
+		▪ Monthly flex
+			§ A minimum of $1000 monthly charge and a commitment of 12months minimum. 
+			§ 33% to 60% savings vs PAYG
+			§ Monthly pre-paid usage.
+		▪ BYOL
+			§ Port licenses from on-premise to OCI
+		▪ Factors that impact pricing
+			§ Resource size and types - bigger resources cost more.
+			§ Data transfer - No ingress charges, Egress costs beyond 10TB a month.
+			§ All regions have the same pricing. 
+		▪ Block volume pricing
+			§ 0.0255$ per GB
+			§ Performance costs additional for Balanced and HPUs.
+				□ Basic - 200 IOPS - 0VPUs - 0$ per GB
+				□ Balanced - 6000 IOPS - 10VPUs - 0.017$ per GB
+				□ HPU - 7500 IOPS - 20VPUs - 0.034$ per GB
+		▪ Ingress always free
+		▪ Egress
+			§ Free within AD
+			§ Free within AD's in same region
+			§ Chargeable between regions
+			§ Chargeable between OCI and Internet.
+	2) Cost management
+		▪ Cost tracking tags can be used to track costs and analyze them in cost analysis dashboard with tag keys
+		▪ Budgets can be allotted to 
+			§ Compartments 
+			§ Cost tracking tags
+		▪ Usage reports can be downloaded as CSVs and they contain usage data of 24hours. 
+		▪ Retained for 1year by default.
+	3) Free tier:
+		▪ $300 credits for 30 day usage
+		▪ Couple of always free to use services.
+
+
+Security
+	1) Shared security Model
+		▪ Responsibility is shared between consumers and OCI
+		▪ Consumer responsibility - patching of Oses, OS configurations, IAM,  Network security etc, Data classification and compliance. 
+		▪ Oracle responsibility - Physical security, hardware and networking
+		
+	2) Security Service
+		▪ IAM
+		▪ Key management - centralized key management capabilities
+		▪ Hardware Security modules(HSMs) are FIPS 140-2(Federal Information processing Standards) - they are tramper resistance - deletes the keys when it detects tampering.
+		▪ MFA - multi factor auth
+		▪ Federation for SSO, uses Identity provider(IdP)
+		▪ Encryption at rest and in-transit
+		▪ WAF
+		▪ DDoS protection - in-built 
+	3) Identity and Access management
+		▪ Who - Groups, Users and instances
+		▪ Permissions -> Policies -> compartments -> resources
+	4) Data Protection 
+		▪ Block volume - Data encrypted at rest and in-transit
+		▪ File storage - Data encrypted at rest and in-transit
+		▪ Object storage - Data encrypted at rest and in-transit, private buckets, pre-authenticated requests
+		▪ Database - Transparent Data encryption, Data safe and vault.
+			§ Data safe is Managed service that provides insights on security on oracle databases.
+			§ Features include security assessment, user assessment, data discovery, masking and activity auditing
+			§ Data safe supports ATP, ADW and VM/BM DB systems.
+			§ No extra costs to use
+	5) OS and Workload isolation 
+		▪ OS management service: Automates and executes management tasks.
+		▪ Package and configuration management. 
+		▪ Security and compliance reporting.
+		▪ Configured by default in Oracle Linux Instances for live patching without downtime.
+	6) Infrastructure protection 
+		▪ Tiered Subnet - DMZ LBs, Private and public subnets. 
+		▪ Gateways - Internet, NAT and DRG(Dynamic Routing Gateway)
+		▪ Security lists(subnet) and NSG(VNIC)
+		▪ WAF - HTTP/S filter, server side - protects against cross site scripting, SQL injection and ability to filter specific IP. Protects applications from unwanted traffic. Stops Layer 7 DDoS attacks.
+
+Storage
+	1) Block volume
+		▪ Hard-drive equivalent, stores beyond lifetime of compute instances
+		▪ No high level metadata 
+		▪ Can mount to any kind of File system
+		▪ Periodic backups recommended with OCI allowed automated scheduled backups to object storage.
+		▪ Boot volume - OS disk
+		▪ Block volume - Data disk
+	2) Local NVMe
+		▪ Designed high performance local storage
+		▪ NoSQL databases, DWH, in-memory DBs
+		▪ Storage is non-persistent.
+		▪ No support of snapshots, backups.
+	3) File Storage
+		▪ NFS equivalent - NFSv3
+		▪ Hierarchical 
+		▪ Access over network without additional software
+		▪ Restore a file within snapshot or entire snapshot using cp, rsync command
+	4) Object Storage
+		▪ No hierarchy - flat structure 
+		▪ Metadata - index based
+		▪ Internet scale, high performance
+		▪ Optional - multi AD region backup
+		▪ Cross region copy for DR scenarios
+	5) Archive Storage
+		▪ Same as Object storage but the retrieval rate is slow.
+		▪ 10times cheaper that standard 
+		▪ 90 days minimum retention period.
+		▪ Archive bucket can't be upgraded to standard storage tier or vice versa
+
+Database Services
+	1) OCI DB options
+		▪ VM DBs - Fast provisioning, billing continues in stopped state. Increase storage.
+		▪ Bare Metal DBs - Fast performance, billing stops in stop state. Scale CPUs
+		▪ RAC - Managed High availability 
+		▪ ExaData DBs - Managed ExaData Infrastructure 
+		▪ Autonomous Shared - Self driving, repairing and securing, multi-tenant
+		▪ Autonomous Dedicated - Self driving, repairing and securing, single-tenant
+	2) DB Systems - Security - IAM, VCN, TDE, RMAN. 
+	3) DB backups
+		▪ Backup  - manual or automatic to oracle owned object storage - midnight between a 2hr window - preset retention between 7 - 60 Days.
+		▪ Recover - from object storage based on time, good state and SCN
+	4) DB HA and DR - RAC and Data Guard(Sync between Prod and Standby)
+		▪ Two modes for Data guard.
+			§ Switchover - Planned with no data loss
+			§ Fail over - unplanned with minimal data loss
+	5) Autonomous DBs
+		▪ Fully managed ATP and ADWH
+		▪ Backup, patching, upgrading and tuning is automated without downtime.
+
+IAM Services
+	1) IAM
+		▪ Who - Groups, Users and instances
+		▪ Permissions -> Policies -> compartments -> resources
+		▪ Instance principals lets instances to make API calls to other OCI resources without configuring user credentials or a config file.
+	2) Authentication
+		▪ User name, password
+		▪ API signing key required when using the OCI API in conjunction with SDK/CLI
+		▪ Auth tokens - to authenticate with 3rd party APIs, don't working with OCI
+	3) Authorization and Policies
+		▪ Policies are OCI authorizations. 
+		▪ All policies are written in human readable format like "Allow group <groupname> to <verb> <compartment/tenancy> where <>"
+		▪ Verb contains - inspect, read, use and manage
+		▪ Resource type consists of the resource name. 
+
+SLA
+	1) SLA
+		▪ Tier based service credit if there is a drop in service(If claim request made)
+		▪ Availability is defined as a return response of 2XX for an API call that performs a cryptographic operation
+		▪ > 99.9 No credit
+		▪ < 99.9 10% credit(More than 44.2 minutes outage in 30 days(43200 min))
+		▪ < 99.0 25% credit(More than 7.2 hours outage in 30 days)
+		▪ < 95 100% credit(More than 36 hours outage in 30 days)
+		▪ Availability/Data plane - services in operation with uptime and connectivity.
+		▪ Manageability/Control Plane - ability to manage, monitor and modify
+		▪ Performance - Services performed as expected. 
+	2) Support
+		▪ No support for always free resources customers
+		▪ Limited support for free tier accounts and free tier credits usage.
+		▪ Paid accounts can open service requests for - need customer support identifier(CSI), OCID of tenancy and resource
+			§ Resolving technical issues
+			§ Reset password or unlock tenancy password.
+			§ Adding or modifying tenancy password
+			§ Request a service limit increase.
+			
+
+
+
